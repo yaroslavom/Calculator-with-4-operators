@@ -6,60 +6,31 @@ var buttonDevide = document.getElementById("buttonDevide");
 var input1 = document.getElementById('number1') 
 var input2 = document.getElementById('number2') 
 
-function getNumber1() {
-    var number1 = Number(input1.value);
-    return number1
-}
-
-function getNumber2() {
-    var number2 = Number(input2.value);
-    return number2
-}
-
 function makeOperation(operationCode) {
+    var number1 = Number(input1.value);
+    var number2 = Number(input2.value);
+
     if (operationCode === "+") {
-        var result = getNumber1() + getNumber2();
-        // window.alert(result)
+        var result = number1 + number2;
     } else if (operationCode === "-") {
-        var result = getNumber1() - getNumber2();
-        // window.alert(result)
+        var result = number1 - number2;
     } else if (operationCode === "*") {
-        var result = getNumber1() * getNumber2();
-        // window.alert(result)
+        var result = number1 * number2;
     } else if (operationCode === "/") {
-        var result = getNumber1() / getNumber2();
-        // window.alert(result)
+        var result = number1 / number2;
     } else {
         window.alert("Operation is unknown")
     }   
     window.alert(result);
 }
 
-function onButtonPlusClick() {
-    // var result = getNumber1() + getNumber2();
-    // window.alert(result)
-    makeOperation("+"); 
+function onOperationButtonClick(eventObject) {
+    var clickedElement = eventObject.currentTarget;
+    var operation = clickedElement.innerHTML;
+    makeOperation(operation);
 }
 
-function onButtonMinusClick() {
-    // var result = getNumber1() - getNumber2();
-    // window.alert(result)
-    makeOperation("-"); 
-}
-
-function onButtonMultiplyClick() {
-    // var result = getNumber1() * getNumber2();
-    // window.alert(result)
-    makeOperation("*"); 
-}
-
-function onButtonDevideClick() {
-    // var result = getNumber1() / getNumber2();
-    // window.alert(result)
-    makeOperation("/"); 
-}
-
-buttonPlus.addEventListener('click', onButtonPlusClick);
-buttonMinus.addEventListener('click', onButtonMinusClick);
-buttonMultiply.addEventListener('click', onButtonMultiplyClick);
-buttonDevide.addEventListener('click', onButtonDevideClick);
+buttonPlus.addEventListener('click', onOperationButtonClick);
+buttonMinus.addEventListener('click', onOperationButtonClick);
+buttonMultiply.addEventListener('click', onOperationButtonClick);
+buttonDevide.addEventListener('click', onOperationButtonClick);
